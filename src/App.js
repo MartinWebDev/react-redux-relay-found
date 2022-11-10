@@ -1,5 +1,6 @@
 import React from "react";
 import HashProtocol from 'farce/HashProtocol';
+import BrowserProtocol from 'farce/BrowserProtocol';
 import queryMiddleware from 'farce/queryMiddleware';
 import { Resolver } from 'found-relay';
 import createFarceRouter from 'found/createFarceRouter';
@@ -17,7 +18,7 @@ const environment = new Environment({
 });
 
 const Router = createFarceRouter({
-  historyProtocol: new HashProtocol(),
+  historyProtocol: new BrowserProtocol(),
   historyMiddlewares: [queryMiddleware],
   routeConfig: routes,
 });
