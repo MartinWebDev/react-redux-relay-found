@@ -1,7 +1,7 @@
 import { createResolver } from "./createResolver";
-import fetcher from "./getFetcher";
+import getFetcher from "./getFetcher";
 
 export const getFetcherResolver = () => {
-  const fetch = fetcher("http://localhost:4000");
+  const fetch = getFetcher("http://localhost:3333/graphql");
   return createResolver(fetch);
 };

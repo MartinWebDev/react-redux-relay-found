@@ -6,7 +6,8 @@
     "relay-compiler": "relay-compiler --watchman false --src src --exclude 'data/**' --schema src/data/schema.graphql",
     "start": "npm run relay-compiler && webpack-dev-server --mode development --hot",
     "update-schema": "cross-env NODE_ENV=test babel-node tools/updateSchema.js",
-    "webpack": "webpack --mode production"
+    "webpack": "webpack --mode production",
+    "server:todos": "npx nodemon ./src/server/server.js"
   },
   "husky": {
     "hooks": {
@@ -37,6 +38,7 @@
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.4",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
     "eslint": "^6.8.0",
@@ -47,10 +49,13 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
     "farce": "^0.4.5",
     "found": "^1.1.2",
     "found-relay": "^1.0.2",
     "graphql": "^14.6.0",
+    "graphql-playground-middleware-express": "^1.7.23",
     "graphql-relay": "^0.6.0",
     "html-webpack-plugin": "^4.0.3",
     "husky": "^4.2.3",

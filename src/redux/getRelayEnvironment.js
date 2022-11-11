@@ -1,6 +1,6 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
-import schema from '../data/schema';
+// import schema from '../data/schema';
 
 export const getRelayEnvironment = (fetcher) => {
   // const environment = new Environment({
@@ -10,8 +10,13 @@ export const getRelayEnvironment = (fetcher) => {
 
   // return environment;
 
+  // const environment = new Environment({
+  //   network: Network.create({ schema }),
+  //   store: new Store(new RecordSource()),
+  // });
+
   const environment = new Environment({
-    network: Network.create({ schema }),
+    network: Network.create(fetcher),
     store: new Store(new RecordSource()),
   });
 

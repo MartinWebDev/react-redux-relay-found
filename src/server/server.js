@@ -1,12 +1,15 @@
 const express = require('express');
-const path = require('path');
+const cors = require("cors");
+// const path = require('path');
 const { graphqlHTTP } = require('express-graphql');
 const expressPlayground = require('graphql-playground-middleware-express').default;
-const schema = require('../data/schema');
+
+const schema = require('./data/schema');
 
 const PORT = 3333;
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // This is the pretty dark-mode GraphQL IDE
@@ -21,3 +24,7 @@ app.use(
     graphiql: false,
   }),
 );
+
+app.listen(PORT, () => {
+  console.log("Server is ready");
+});
