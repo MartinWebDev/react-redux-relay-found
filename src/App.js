@@ -1,36 +1,21 @@
 import React from "react";
-import HashProtocol from 'farce/HashProtocol';
-import BrowserProtocol from 'farce/BrowserProtocol';
-import queryMiddleware from 'farce/queryMiddleware';
-import { Resolver } from 'found-relay';
-import createFarceRouter from 'found/createFarceRouter';
-import { Network } from 'relay-local-schema';
-import { Environment, RecordSource, Store } from 'relay-runtime';
+// import BrowserProtocol from 'farce/BrowserProtocol';
+import { BrowserProtocol } from 'farce';
 import { Provider } from 'react-redux';
+import { createConnectedRouter, createRender } from 'found';
 
-import schema from './data/schema';
-import routes from './routes';
 import { createStore } from './redux/createStore';
+import { getFetcherResolver } from './redux/getFetcherResolver';
 
-const environment = new Environment({
-  network: Network.create({ schema }),
-  store: new Store(new RecordSource()),
-});
+const ConnectedRouter = createConnectedRouter({ render: createRender({}) });
 
-const Router = createFarceRouter({
-  historyProtocol: new BrowserProtocol(),
-  historyMiddlewares: [queryMiddleware],
-  routeConfig: routes,
-});
-
-const store = createStore();
+const store = createStore(new BrowserProtocol());
+const resolver = getFetcherResolver();
 
 export default function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <Router resolver={new Resolver(environment)} />
-      </div>
+      <ConnectedRouter resolver={resolver} />
     </Provider>
   );
 }
