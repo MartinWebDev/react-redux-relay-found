@@ -23,4 +23,4 @@ This does however mean to run this demo you must also run the server locally.
 - In another terminal run `yarn run start`
 
 Then point your browser at [http://localhost:8080/](http://localhost:8080/).\
-You can also point to [http://localhost:4000/gql](http://localhost:4000/gql) to view the graphql playground.
+You can also point to [http://localhost:3333/gql](http://localhost:3333/gql) to view the graphql playground.
