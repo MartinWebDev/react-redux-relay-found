@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  ReactRelayContext,
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import { ReactRelayContext, createFragmentContainer, graphql } from 'react-relay';
 
 import MarkAllTodosMutation from '../mutations/MarkAllTodosMutation';
 import Todo from './Todo';
@@ -21,12 +17,7 @@ class TodoList extends React.Component {
     const { relay, viewer } = this.props;
     const complete = e.target.checked;
 
-    MarkAllTodosMutation.commit(
-      relay.environment,
-      viewer,
-      complete,
-      this.context.variables.status,
-    );
+    MarkAllTodosMutation.commit(relay.environment, viewer, complete, this.context.variables.status);
   };
 
   render() {
@@ -64,8 +55,7 @@ TodoList.contextType = contextType;
 export default createFragmentContainer(TodoList, {
   viewer: graphql`
     fragment TodoList_viewer on User {
-      todos(status: $status, first: 2147483647)
-        @connection(key: "TodoList_todos") {
+      todos(status: $status, first: 2147483647) @connection(key: "TodoList_todos") {
         edges {
           node {
             id

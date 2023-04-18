@@ -1,5 +1,5 @@
+const cors = require('cors');
 const express = require('express');
-const cors = require("cors");
 // const path = require('path');
 const { graphqlHTTP } = require('express-graphql');
 const expressPlayground = require('graphql-playground-middleware-express').default;
@@ -26,5 +26,5 @@ app.use(
 );
 
 app.listen(PORT, () => {
-  console.log("Server is ready");
+  console.log('Server is ready');
 });

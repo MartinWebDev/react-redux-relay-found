@@ -16,7 +16,7 @@ export const AppReducer = (state = defaultAppState, action) => {
         user: {
           username: 'ElUser',
           email: 'user@mail.com',
-        }
+        },
       };
     case 'LOGOUT':
       return {
@@ -24,7 +24,7 @@ export const AppReducer = (state = defaultAppState, action) => {
         user: {
           username: 'Anonymous',
           email: '',
-        }
+        },
       };
     default:
       return state;

@@ -1,5 +1,5 @@
-import React from 'react';
 import { Route, makeRouteConfig } from 'found';
+import React from 'react';
 import { graphql } from 'react-relay';
 
 // import TodoApp from './components/TodoApp';
@@ -18,7 +18,7 @@ const routes = (
     path="/"
     // Component={TodoApp}
     getComponent={async () => {
-      return (await import("./components/TodoApp")).default;
+      return (await import('./components/TodoApp')).default;
     }}
     query={graphql`
       query routes_TodoApp_Query {
@@ -31,7 +31,7 @@ const routes = (
     <Route
       // Component={TodoList}
       getComponent={async () => {
-        return (await import("./components/TodoList")).default;
+        return (await import('./components/TodoList')).default;
       }}
       query={TodoListQuery}
       prepareVariables={(params) => ({ ...params, status: 'any' })}
@@ -40,7 +40,7 @@ const routes = (
       path=":status"
       // Component={TodoList}
       getComponent={async () => {
-        return (await import("./components/TodoList")).default;
+        return (await import('./components/TodoList')).default;
       }}
       query={TodoListQuery}
     />

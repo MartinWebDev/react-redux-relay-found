@@ -43,8 +43,7 @@ class TodoApp extends React.Component {
         <footer className="info">
           <p>Double-click to edit a todo</p>
           <p>
-            Adapted by <a href="http://fashionablenonsense.com/">@jimmy_jia</a>{' '}
-            from work by the{' '}
+            Adapted by <a href="http://fashionablenonsense.com/">@jimmy_jia</a> from work by the{' '}
             <a href="https://facebook.github.io/relay/">Relay team</a>
           </p>
           <p>

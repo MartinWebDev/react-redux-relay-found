@@ -69,10 +69,7 @@ const GraphQLTodo = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
-const {
-  connectionType: TodosConnection,
-  edgeType: GraphQLTodoEdge,
-} = connectionDefinitions({ nodeType: GraphQLTodo });
+const { connectionType: TodosConnection, edgeType: GraphQLTodoEdge } = connectionDefinitions({ nodeType: GraphQLTodo });
 
 const GraphQLUser = new GraphQLObjectType({
   name: 'User',
@@ -87,8 +84,7 @@ const GraphQLUser = new GraphQLObjectType({
         },
         ...connectionArgs,
       },
-      resolve: (obj, { status, ...args }) =>
-        connectionFromArray(getTodos(status), args),
+      resolve: (obj, { status, ...args }) => connectionFromArray(getTodos(status), args),
     },
     numTodos: {
       type: GraphQLInt,

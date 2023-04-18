@@ -1,8 +1,7 @@
-import React from "react";
-// import BrowserProtocol from 'farce/BrowserProtocol';
 import { BrowserProtocol } from 'farce';
-import { Provider } from 'react-redux';
 import { createConnectedRouter, createRender } from 'found';
+import React from 'react';
+import { Provider } from 'react-redux';
 
 import { createStore } from './redux/createStore';
 import { getFetcherResolver } from './redux/getFetcherResolver';
@@ -16,6 +15,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter resolver={resolver} />
+      {/* <ConnectedRouter resolver={resolver} initialRenderArgs={} matchContext={} /> */}
     </Provider>
   );
 }

@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 
-class Todo extends Object { }
-class User extends Object { }
+class Todo extends Object {}
+class User extends Object {}
 
 // Mock authenticated ID.
 const VIEWER_ID = 'me';
@@ -95,4 +95,17 @@ function renameTodo(id, text) {
   todo.text = text;
 }
 
-module.exports = { Todo, User, addTodo, getTodo, changeTodoStatus, getTodos, getUser, getViewer, markAllTodos, removeTodo, removeCompletedTodos, renameTodo };
+module.exports = {
+  Todo,
+  User,
+  addTodo,
+  getTodo,
+  changeTodoStatus,
+  getTodos,
+  getUser,
+  getViewer,
+  markAllTodos,
+  removeTodo,
+  removeCompletedTodos,
+  renameTodo,
+};

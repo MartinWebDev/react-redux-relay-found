@@ -49,11 +49,7 @@ class TodoListFooter extends React.Component {
         </ul>
 
         {!!numCompletedTodos && (
-          <button
-            type="button"
-            className="clear-completed"
-            onClick={this.onClearCompletedClick}
-          >
+          <button type="button" className="clear-completed" onClick={this.onClearCompletedClick}>
             Clear completed
           </button>
         )}
