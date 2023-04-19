@@ -1,14 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { Actions as FarceActions, createHistoryEnhancer, queryMiddleware } from 'farce';
+import { Matcher, createMatchEnhancer } from 'found';
 import logger from 'redux-logger';
-import {
-  createHistoryEnhancer,
-  queryMiddleware,
-  Actions as FarceActions
-} from 'farce';
-import { createMatchEnhancer, Matcher } from 'found';
 
-import { reducers } from './createReducers';
 import routes from '../routes';
+import { reducers } from './createReducers';
 
 export const createStore = (historyProtocol) => {
   const store = configureStore({
@@ -21,7 +17,7 @@ export const createStore = (historyProtocol) => {
       }),
       createMatchEnhancer(new Matcher(routes)),
     ],
-    devTools: true
+    devTools: true,
   });
 
   store.dispatch(FarceActions.init());

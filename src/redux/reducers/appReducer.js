@@ -6,7 +6,8 @@ export const defaultAppState = {
 };
 
 export const AppReducer = (state = defaultAppState, action) => {
-  // const { type, data } = action;
+  console.log('> reduce', action);
+
   const { type } = action;
 
   switch (type) {

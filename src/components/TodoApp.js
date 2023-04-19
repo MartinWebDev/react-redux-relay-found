@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import { createFragmentContainer, graphql } from 'react-relay';
 
 import AddTodoMutation from '../mutations/AddTodoMutation';
+import * as appActions from '../redux/reducers/appActions';
 import TodoListFooter from './TodoListFooter';
 import TodoTextInput from './TodoTextInput';
 
@@ -10,9 +12,19 @@ const propTypes = {
   viewer: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   relay: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+  }),
+  userLogin: PropTypes.func,
+  userLogout: PropTypes.func,
 };
 
 class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log('App props -> ', props);
+  }
+
   onNewTodoSave = (text) => {
     const { relay, viewer } = this.props;
 
@@ -24,6 +36,16 @@ class TodoApp extends React.Component {
 
     return (
       <div data-framework="relay">
+        <section className="user-navbar">
+          Hello {this.props.user.username}
+          <button type="button" onClick={this.props.userLogin}>
+            Login
+          </button>
+          <button type="button" onClick={() => this.props.userLogout()}>
+            Logout
+          </button>
+        </section>
+
         <section className="todoapp">
           <header className="header">
             <h1>todos</h1>
@@ -47,7 +69,10 @@ class TodoApp extends React.Component {
             <a href="https://facebook.github.io/relay/">Relay team</a>
           </p>
           <p>
-            Part of <a href="http://todomvc.com">TodoMVC</a>
+            Previously part of <a href="http://todomvc.com">TodoMVC</a>
+          </p>
+          <p>
+            Further enhanced with additional libraries by <a href="https://github.com/MartinWebDev">@MartinWebDev</a>
           </p>
         </footer>
       </div>
@@ -57,7 +82,7 @@ class TodoApp extends React.Component {
 
 TodoApp.propTypes = propTypes;
 
-export default createFragmentContainer(TodoApp, {
+const Component = createFragmentContainer(TodoApp, {
   viewer: graphql`
     fragment TodoApp_viewer on User {
       id
@@ -65,3 +90,22 @@ export default createFragmentContainer(TodoApp, {
     }
   `,
 });
+
+const mapStateToProps = (state, props) => {
+  console.group('=== mapStateToProps ===');
+  console.log('state', state);
+  console.log('props', props);
+  console.groupEnd();
+  return {
+    user: {
+      username: state.app.user.username,
+      email: state.app.user.email,
+    },
+  };
+};
+
+const mapDispatchToProps = {
+  ...appActions,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Component);
